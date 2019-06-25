@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Table, Tag } from 'antd';
 import { Button } from 'antd';
+import { Container, Row, Col } from 'react-bootstrap';
 import { filter } from 'lodash';
 import Cart from './Cart';
 import Sum from './Sum'
@@ -35,7 +36,7 @@ const columns = [
     key: 'price',
   },
   {
-    title: 'Ecart',
+    title: 'ecart',
     dataIndex: 'ecart',
     key: 'ecart',
   },
@@ -64,7 +65,7 @@ const columns = [
     key: 'action',
     render: (text, record) => (
       <span>
-        <Button type="primary" onClick={() => AccessRow(record)}> {record.ecart ? 'Remove Cart': 'Add Cart'}</Button>        
+        <Button type={record.ecart ? 'danger' : 'primary'} onClick={() => AccessRow(record)}> {record.ecart ? 'Remove Cart': 'Add Cart'}</Button>        
       </span>
     ),
   },
@@ -82,18 +83,25 @@ function AccessRow (row) {
 };
 
 
-return (
-    <div>
-    <Table columns={columns} dataSource={filter(user.data, function(pro) { return !pro.ecart; })} />
-        <h1>    
-            Adicionados Carinho
-        </h1> 
-        <Cart columns={columns} dataSource={ecart}/>       
-        <h1>    
-          Sum
-        </h1>   
-        <Sum />    
-        </div>
+return (    
+      <Container>
+      <Row>
+          <Col lg={true} sm={8} md={8}>
+            <Table columns={columns} dataSource={filter(user.data, function(pro) { return !pro.ecart; })} />
+            <h1>    
+                Adicionados Carinho
+            </h1> 
+            <Cart columns={columns}/>
+          </Col>      
+
+          <Col lg={true} sm={4} md={4}>                                    
+            <h1>    
+            Total dos Produtos Carrinho:
+            </h1>   
+            <Sum /> 
+          </Col>
+        </Row>
+        </Container>
     );
 }
 

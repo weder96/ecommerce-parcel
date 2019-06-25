@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { UserProvider } from './e-cart/UserContext'
 import Products from './e-cart/Product'
+import './assets/css/app.css';
 
 const App = () => {
 const data = [
@@ -18,7 +19,7 @@ const data = [
         description: "Give your playing field a professional touch",
         price: 34.95 , ecart: false, tags: ['nice', 'developer']
     },
-    /*{ key: 5, name: "Stadium", category: "Soccer",
+    { key: 5, name: "Stadium", category: "Soccer",
         description: "Flat-packed 35,000-seat stadium", price: 79500 ,  tags: ['nice', 'developer'] 
     },
     { key: 6, name: "Thinking Cap", category: "Chess",
@@ -32,19 +33,17 @@ const data = [
     },
     { key: 9, name: "Bling Bling King", category: "Chess",
     description: "Gold-plated, diamond-studded King", price: 1200 , tags: ['cool', 'teacher'] 
-},*/
+},
 ];
 
-const user = { name: 'Weder', loggedIn: true, data: data }
+const user = { name: 'Total dos Produtos Carrinho: ', loggedIn: true, data: data }
 
 return ( 
     <UserProvider value={user}>
-    <div>
         <h1>    
             Products            
-        </h1>
-        <Products />
-    </div>
+        </h1>            
+        <Products />    
     </UserProvider> 
     );
 }

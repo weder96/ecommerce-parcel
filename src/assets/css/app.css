@@ -1,0 +1,11 @@
+.container {
+    display: flex; /* or inline-flex */
+}
+
+.row {
+    width: 100%;
+}
+
+#root {
+    background-color: grey;
+}
