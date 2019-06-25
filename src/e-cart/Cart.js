@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Table } from 'antd';
 import { filter } from 'lodash';
 import 'antd/dist/antd.css';
+import UserContext from './UserContext'
 
 const Cart = props => { 
 let { columns } = props;
-let [dataSource, setDataSource] = useState(() => props.dataSource);
+
+const user = useContext(UserContext)
+console.log(user.data);
+
 useEffect(() => {
     console.log('useEffect Cart'); 
-},[dataSource]);  
+},[]);  
 
 return (
 <div>
-    <Table columns={columns} dataSource={filter(dataSource, function(pro) { return pro.ecart; })} />    
+    <Table columns={columns} dataSource={filter(user.data, function(pro) { return pro.ecart; })} />    
 </div>    
 );
 }

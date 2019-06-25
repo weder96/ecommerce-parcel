@@ -1,13 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react';
+import { filter } from 'lodash';
 import UserContext from './UserContext'
 
 
-function Sum(props) {
-    const user = useContext(UserContext)
+function Sum() {
+    const user = useContext(UserContext)    
+    let [dtSum, setDtSum] = useState(0);
+    console.log('useEffect');
+    let arr = filter(user.data, function(pro) { return pro.ecart; });        
+    arr.reduce(function(a, b) {return a + b.price}, 0);
+    
+
     return (
     <div> 
-        {console.log(user.name)}
-        {user.name}:{props.sum}
+        {console.log(user.data)}
+        {user.name}:{arr.reduce(function(a, b) {return a + b.price}, 0)}
     </div>
     );
 }
