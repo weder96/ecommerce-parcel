@@ -11,7 +11,9 @@ function Sum() {
     return (
     <div> 
         {console.log(user.data)}
-        {user.name} R$:{arr.reduce(function(a, b) {return a + b.price}, 0)}
+        <br /> 
+        R$:<p className="rs-value"> {arr.reduce(function(a, b) {return a + b.price}, 0).toFixed(2)}</p>
+        Itens:<p className="rs-value"> {arr.length}</p>
     </div>
     );
 }

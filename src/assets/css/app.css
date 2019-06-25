@@ -1,11 +1,9 @@
-.container {
-    display: flex; /* or inline-flex */
-}
 
-.row {
-    width: 100%;
-}
 
-#root {
-    background-color: grey;
+.rs-value {
+    max-width: 380px;
+    background-color: black;
+    color: aliceblue;
+    font-size: 4.2em;
+    padding: 50px;
 }

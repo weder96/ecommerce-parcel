@@ -86,7 +86,7 @@ function AccessRow (row) {
 return (    
       <Container>
       <Row>
-          <Col lg={true} sm={8} md={8}>
+          <Col lg={true} sm={7} md={7}>
             <Table columns={columns} dataSource={filter(user.data, function(pro) { return !pro.ecart; })} />
             <h1>    
                 Adicionados Carinho
@@ -94,7 +94,7 @@ return (
             <Cart columns={columns}/>
           </Col>      
 
-          <Col lg={true} sm={4} md={4}>                                    
+          <Col lg={true} sm={5} md={5}>                                    
             <h1>    
             Total dos Produtos Carrinho:
             </h1>   
