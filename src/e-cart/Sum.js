@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import UserContext from './UserContext'
+
 
 function Sum(props) {
-    return (<div> {props.sum}</div>);
+    const user = useContext(UserContext)
+    return (
+    <div> 
+        {console.log(user.name)}
+        {user.name}:{props.sum}
+    </div>
+    );
 }
 export default Sum;

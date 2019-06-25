@@ -1,12 +1,15 @@
-import React from 'react'
-import { Table, Divider, Tag } from 'antd';
+import React, { useState, useEffect } from 'react'
+import { Table, Tag } from 'antd';
 import { Button } from 'antd';
 import { filter } from 'lodash';
 import Cart from './Cart';
+import Sum from './Sum'
 import 'antd/dist/antd.css';
-import { stringify } from 'querystring';
 
-const Products = () => { 
+const Products = () => {
+let [ecart , setEcart ] =  useState([]);
+let [dtSum, setDtSum] = useState(0);
+
 const columns = [
   {
     title: 'name',
@@ -73,7 +76,7 @@ const data = [
                 description: "Protective and fashionable", price: 48.95 , ecart: false,  tags: ['nice', 'developer'] 
             },
             { key: 3, name: "Soccer Ball", category: "Soccer",
-                description: "FIFA-approved size and weight", price: 19.50 ,  ecart: true,  tags: ['nice', 'developer'] 
+                description: "FIFA-approved size and weight", price: 19.50 ,  ecart: false,  tags: ['nice', 'developer'] 
             },
             { key: 4, name: "Corner Flags", category: "Soccer",
                 description: "Give your playing field a professional touch",
@@ -96,25 +99,43 @@ const data = [
         },*/
 ];
 
-const AccessRow = (row) => {
-  console.log(row.key)
-  data.forEach((item, index) => {
-    if(row.key === item.key){
-      data[index].ecart = data[index].ecart === true ? false : true;          
-      console.log(JSON.stringify(item));
-    }  
-  }) 
+function AccessRow (row) {
+  if(row !== undefined){    
+    data.forEach((item, index) => {
+      if(row.key === item.key){
+        data[index].ecart = data[index].ecart === true ? false : true;          
+        console.log(JSON.stringify(item));
+        setEcart([data[index]]);
+      }  
+    })
+  }   
 };
 
+useEffect(() => {
+  ecart.map( cart => console.log(cart.key));  
+},[ecart]);     
+
+ useEffect(() => {
+  console.log('useEffect');
+  function fetchProduct() {
+      let arr = filter(data, function(pro) { return pro.ecart; });        
+      setDtSum(arr.reduce(function(a, b) {return a + b.price}, 0));
+  }
+  fetchProduct();   
+},[]);  
 
 return (
     <div>
     <Table columns={columns} dataSource={filter(data, function(pro) { return !pro.ecart; })} />
         <h1>    
             Adicionados Carinho
-        </h1>  
-    <Cart columns={columns} dataSource={data}/>    
-    </div>
+        </h1> 
+        <Cart columns={columns} dataSource={ecart}/>       
+        <h1>    
+          Sum
+        </h1>   
+        <Sum sum={dtSum} />    
+        </div>
     );
 }
 
