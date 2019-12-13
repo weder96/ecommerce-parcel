@@ -20,6 +20,13 @@
     "lodash": "^4.17.11",
     "react": ">=16.8.0",
     "react-bootstrap": "^1.0.0-beta.9",
-    "react-dom": ">=16.8.0"
+    "react-dom": ">=16.8.0",
+    "react-redux": "^7.1.3",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-saga": "^1.1.3",
+    "remote-redux-devtools": "^0.5.16",
+    "styled-components": "^4.4.1"
   }
 }
