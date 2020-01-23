@@ -1,7 +1,7 @@
 import React from 'react';
 import { UserProvider } from '../../e-cart/UserContext';
 import Products from '../../e-cart/Product'
-import './../../assets/css/app.css';
+import './../../../assets/css/app.css';
 
 const Cart = () => {
 
